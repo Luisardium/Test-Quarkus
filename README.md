@@ -60,7 +60,7 @@ Este proyecto implementa una API REST en Quarkus que permite gestionar personas 
 ### 4. Ver direcciones de una persona por ID
 
 - **Método:** `GET`
-- **URL:** `http://localhost:8080/address/{id}/address`
+- **URL:** `http://localhost:8080/person/{id}/address`
 - **Respuesta JSON esperada:**
 ```json
 [
