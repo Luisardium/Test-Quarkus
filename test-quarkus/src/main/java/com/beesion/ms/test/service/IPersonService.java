@@ -9,4 +9,5 @@ public interface IPersonService {
 	
 	public void save(Person per);
 	public List<Address> ObtenerDireccionPorID(Long personId);
+	public Person findById(Long id);
 }

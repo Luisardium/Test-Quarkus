@@ -1,5 +1,6 @@
 package com.beesion.ms.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,18 +10,15 @@ import java.util.List;
 @Data
 public class Person {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String name;
 
-	@Id
-	@SequenceGenerator(name = "PersonIdGenerator")
-	@GeneratedValue(generator = "PersonIdGenerator")
-	public Long getId() {
-		return id;
-	}
-
-//	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true) //Relacion con tabla de direcciones
-//	private List<Address> addresses;
+	@OneToMany(mappedBy = "person")
+	@JsonManagedReference //evita ciclos
+	private List<Address> addresses;
 
 
 }

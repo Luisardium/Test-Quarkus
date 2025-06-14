@@ -18,6 +18,11 @@ public class PersonRepo implements IPersonRepo {
 	EntityManager em;
 
 	@Override
+	public boolean existsById(Long id) {
+		return true;
+	}
+
+	@Override
 	@Transactional
 	public void save(Person per) {
 		em.persist(per);

@@ -10,10 +10,8 @@ import com.beesion.ms.test.service.IPersonService;
 import com.beesion.ms.test.service.impl.PersonService;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.util.List;
@@ -33,13 +31,10 @@ public class PersonaResource {
 
 	@GET
 	@Path("/{id}/address")
-	public Response getAddressesByPerson(@PathParam("id") Long personId) {
-		List<Address> addresses = personService.ObtenerDireccionPorID(personId);
-		List<AddressDto> addressDtos = addresses.stream()
-				.map(AddressMapper::toDto)
-				.collect(Collectors.toList());
-
-		return Response.ok(addressDtos).build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response direccionesPorId(@PathParam("id") Long personId) {
+		List<Address> direcciones = personService.ObtenerDireccionPorID(personId);
+		return Response.ok(direcciones).build();
 	}
 
 }

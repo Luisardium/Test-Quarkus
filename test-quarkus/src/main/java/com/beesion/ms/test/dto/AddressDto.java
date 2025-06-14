@@ -7,4 +7,5 @@ public class AddressDto {
     private int zona;
     private String municipio;
     private String departamento;
+    private Long person_id;
 }

@@ -1,7 +1,10 @@
 package com.beesion.ms.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -15,7 +18,10 @@ public class Address {
     private String municipio;
     private String departamento;
 
- /*   @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person; */
+    @ManyToOne
+    @JoinColumn(name = "person_id", nullable = false)
+    @JsonBackReference //evita ciclos
+    private Person person;
+
+
 }
